@@ -1,0 +1,13 @@
+{
+    "name": "Blockport",
+    "short_name": "Blockport",
+    "icons": [
+        {
+            "src": "google-touch-icon.png",
+            "sizes": "512x512"
+        }
+    ],
+    "theme_color": "#44c8f5",
+    "background_color": "#44c8f5",
+    "display": "standalone"
+}
