@@ -2,13 +2,24 @@
 #FONTS
 \*------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
-:root {}
-
 /* CSS variables here */
+
+:root {
+    --global-TextColor: #0C0E23;
+    --global-BgColor: #F5F6FA;
+    --global-selection-BgColor: #3385FF;
+    --global-LinkColor: #3385FF;
+    --global-hover-LinkColor: #1371ff;
+    --global-visited-LinkColor: #0d4dad;
+    --global-FontFamily: 'Inter', sans-serif;
+    accent-color: #3385FF;
+}
 
 /*------------------------------------*\
 #GENERIC
@@ -23,12 +34,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: var(--global-FontFamily);
+    color: var(--global-TextColor);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: var(--global-BgColor);
 }
 
 *,
@@ -45,13 +56,13 @@ html {
 */
 
 ::-moz-selection {
-    background: HotPink;
+    background: var(--global-selection-BgColor);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: HotPink;
+    background: var(--global-selection-BgColor);
     color: white;
     text-shadow: none;
 }
@@ -156,18 +167,26 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: var(--global-LinkColor);
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-visited-LinkColor);
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: var(--global-hover-LinkColor);
+}
+
+label {
+    display: block;
+}
+
+input {
+    display: block;
 }
 
 /*------------------------------------*\
@@ -186,6 +205,10 @@ a:focus {
 }
 
 .o-row--login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     /* stuff here to align the card */
 }
 
@@ -432,11 +455,60 @@ a:focus {
     Website main logo
 */
 
+.c-logo {
+    display: flex;
+    justify-content: center;
+    height: 24px;
+}
+
+.c-logo__symbol {
+    height: 100%;
+    display: block;
+}
+
+.c-logo__path--1 {
+    fill: #20223A;
+}
+
+.c-logo__path--2 {
+    fill: #3385FF;
+}
+
+.c-logo__path--3 {
+    fill: #1B4186;
+}
+
 /*
     Component: Card
     ---
     Card with box shadow
 */
+
+.c-card{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.c-card__body{
+    padding: 40px;
+
+}
+
+.c-card__title{
+    font-size:large;
+    font-weight:500;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 50px;    
+}
+
+.c-card__footer{
+    text-align: center;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+}
 
 /*
     Component: Forms
@@ -444,13 +516,38 @@ a:focus {
     Everything form related here
 */
 
+.c-form-field--option {
+    display: inline-flex;
+}
+
 /*
     Component: Input
     ---
     Class to put on all input="text" like form inputs
 */
 
-.c-input {}
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    
+    width: 100%;
+    border: 1px solid #E2E3E7;
+    border-radius: 3px;
+    font-family: inherit;
+    color: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px;
+}
+
+.c-input:focus{
+    border-color: #4F95FF;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d;
+
+}
 
 .c-input:focus {}
 
@@ -460,7 +557,17 @@ a:focus {
     Class to put on all form labels
 */
 
-.c-label {}
+.c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274;
+}
+
+.c-label--option {
+    margin-bottom: 0;
+    margin-left: 8px;
+}
 
 /* If a input is focused within the form-field class change te color of the label */
 
@@ -472,7 +579,31 @@ a:focus {
     Class to put on form buttons or links
 */
 
-.c-button {}
+.c-button {
+    width: 100%;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background-color: var(--global-LinkColor);
+    border-radius: 5px;
+    padding: 20px;
+    outline: none;;
+}
+
+.c-button:hover{
+    background-color: var(--global-hover-LinkColor);
+}
+
+.c-button:focus{
+    outline: none;;
+    border-color: #4F95FF;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 4px #3385ff4d;
+}
+
+.c-button:active{
+    transform: translateY(1px);
+}
 
 .c-button:hover {}
 
@@ -497,7 +628,7 @@ a:focus {
 }
 
 .u-color-neutral-dark {
-    color: Black;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /*
